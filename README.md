@@ -4,6 +4,7 @@ this project is for sws BIGDATA
 =======
 # big_data
 
+https://www.echartsjs.com/zh/option.html#xAxis.type
 ## Project setup
 ```
 npm install
