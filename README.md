@@ -5,6 +5,9 @@ this project is for sws BIGDATA
 # big_data
 
 https://www.echartsjs.com/zh/option.html#xAxis.type
+https://gallery.echartsjs.com/editor.html?c=xleNWxC5S&v=2
+
+https://blog.csdn.net/fu983531588/article/details/102561187
 ## Project setup
 ```
 npm install
