@@ -1,0 +1,118 @@
+#home {
+    width: 6057px;
+    height: 2220px;
+    background: url('../assets/img/bg.png') no-repeat center top;
+    background-size: 6057px 2220px;
+    overflow: hidden;
+    color: white;
+    font-family: "微软雅黑";
+    font-weight: 500;
+    .mapLight {
+        width: 100%;
+        height: 100%;
+        background: url('../assets/img/light.png') no-repeat left top;
+        position: absolute;
+        top: 0;
+        left: -100px;
+        z-index: 1;
+    }
+    // .top_content{
+        // position: relative;
+        .left_btn_box {
+            margin: 42px 0 0 280px;
+            display: inline-block;
+            position: relative;
+            .base_btn{
+                position: relative;
+                display: inline-block;
+                width: 660px;
+                height: 116px;
+                line-height: 116px;
+                text-align: center;
+                font-weight: bold;
+                transform: skewX(-30deg);
+                background-color: #17225c;
+                p {
+                    transform: skewX(30deg);
+                    cursor: pointer;
+                }
+             }
+            .active_btn {
+                .base_btn;
+                font-size: 76px;
+                font-stretch: normal;
+                letter-spacing: 10px;
+                color: white;
+                background-color: #4364ea;
+            }
+            .normal_btn {
+                .base_btn;
+                height: 114px;
+                top: -7px;
+                border: 1px solid #4364ea;
+                font-size: 57px;
+                letter-spacing: 8px;
+                color: #6cd3ff;
+            }
+        }
+    
+        .b_title {
+            position: relative;
+            left: 1339px;
+            top: 30px;
+            font-size: 90px;
+            font-weight: bold;
+            font-stretch: normal;
+            letter-spacing: 12px;
+            color: #ffffff;
+        }
+
+        .rigth_time_box {
+            width: 1230px;
+            float: right;
+            margin-right: 25px;
+            .w_h {
+                display: inline-block;
+                height: 130px;
+            }
+            .date {
+                .w_h;
+                width: 560px;
+                text-align: right;
+                font-weight: bold;
+                font-stretch: normal;
+                position: relative;
+                top: 15px;
+                .d_week {
+                    padding-right: 9px;
+                    font-size: 45px;
+                    letter-spacing: 6px;
+                }
+                .d_date{
+                    font-size: 57px;
+                    letter-spacing: 8px;
+                }
+            }
+            .time {
+                .w_h;
+                margin-left: 79px;
+                // width: 610px;
+                .t_box {
+                    font-size: 90px;
+                    width: 81px;
+                    height: 130px;
+                    margin-left: 5px;
+                    padding: 5px 10px;
+                    background-color: #3654ce;
+                    border-radius: 6px;
+                }
+                .colon {
+                    font-size: 108px;
+                    color: #3654ce;
+                    margin: 0 3px 0 8px;
+                }
+            }
+        }
+    // }
+    
+}
