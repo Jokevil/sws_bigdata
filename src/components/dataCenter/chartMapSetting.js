@@ -136,13 +136,9 @@ export default {
       return res;
     },
     setMapOptions() {
-      const img = new Image();
-      img.src = '../../assets/img/light2.png';
-      img.width = '100%';
-      img.height = '100%';
-      const optionXyMap01 = {
+      const optionMap = {
         timeline: {
-          // show: false,
+          show: false,
           data: this.year,
           axisType: 'category',
           autoPlay: true,
@@ -258,7 +254,7 @@ export default {
         options: [],
       };
       for (let n = 0; n < this.year.length; n++) {
-        optionXyMap01.options.push({
+        optionMap.options.push({
           backgroundColor: '#0f1642',
           title: [{
             /* text: '地图',
@@ -304,7 +300,6 @@ export default {
           },
           yAxis: {
             type: 'category',
-            //  name: 'TOP 20',
             nameGap: 16,
             axisLine: {
               show: true,
@@ -328,7 +323,6 @@ export default {
             data: this.categoryData,
           },
           series: [
-            // 未知作用
             {
               // 文字和标志
               name: 'light',
@@ -354,7 +348,6 @@ export default {
                 },
               },
             },
-            // 地图？
             {
               type: 'map',
               map: 'china',
@@ -387,7 +380,6 @@ export default {
             },
             // 地图点的动画效果
             {
-              //  name: 'Top 5',
               type: 'effectScatter',
               coordinateSystem: 'geo',
               data: this.convertData(this.mapData[n].sort((a, b) => b.value - a.value).slice(0, 20)),
@@ -420,6 +412,10 @@ export default {
               zlevel: 1.5,
               type: 'bar',
               symbol: 'none',
+              // barGap: '80%', /* 多个并排柱子设置柱子之间的间距 */
+              // barCategoryGap: '50%', /* 多个并排柱子设置柱子之间的间距 */
+              barWidth: this.barData[n].length > 10 ? '' : 50,
+              // barMaxWidth: this.barData[n].length < 4 ? '' : '50%',
               itemStyle: {
                 normal: {
                   color: this.colors[this.colorIndex][n],
@@ -430,7 +426,7 @@ export default {
           ],
         });
       }
-      this.myChart.setOption(optionXyMap01);
+      this.myChart.setOption(optionMap);
     },
   },
   created() {

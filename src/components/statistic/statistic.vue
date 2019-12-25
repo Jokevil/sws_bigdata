@@ -19,42 +19,35 @@
                 <img class="sta_icon" src="../../assets/img/list_icon.png" alt="图标">
                 <span class="sta_txt">机构患者人数统计</span>
               </div>
+              <div class="s_chart_box" ref="s_chart0"></div>
             </div>
             <div class="small_box">
               <div class="sta_title">
                 <img class="sta_icon" src="../../assets/img/list_icon.png" alt="图标">
                 <span class="sta_txt">患者转归人数统计</span>
               </div>
-              <div class="s_chart_box" ref="s_chart1">
-                <!-- <div ref="dom1" style="height: 100%;"></div> -->
-              </div>
+              <div class="s_chart_box" ref="s_chart1"></div>
             </div>
             <div class="small_box">
               <div class="sta_title">
                 <img class="sta_icon" src="../../assets/img/list_icon.png" alt="图标">
                 <span class="sta_txt">患者血源性疾病统计</span>
               </div>
-              <div class="s_chart_box" ref="s_chart2">
-                <!-- <div ref="dom2" style="height: 100%;"></div> -->
-              </div>
+              <div class="s_chart_box" ref="s_chart2"></div>
             </div>
             <div class="middle_box">
               <div class="sta_title">
                 <img class="sta_icon" src="../../assets/img/list_icon.png" alt="图标">
                 <span class="sta_txt">患者性别统计</span>
               </div>
-              <div class="m_chart_box" ref="m_chart1">
-                <!-- <div ref="m_dom1" style="height: 100%;"></div> -->
-              </div>
+              <div class="m_chart_box" ref="m_chart1"></div>
             </div>
             <div class="big_box">
               <div class="sta_title">
                 <img class="sta_icon" src="../../assets/img/list_icon.png" alt="图标">
                 <span class="sta_txt">患者年龄统计</span>
               </div>
-              <div class="l_chart_box" ref="l_chart1">
-                <div ref="l_dom1" style="height: 100%;"></div>
-              </div>
+              <div class="l_chart_box" ref="l_chart1"></div>
             </div>
           </div>
         </div>

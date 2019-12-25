@@ -7,10 +7,16 @@ export default {
       chartsLabelColor: {
         label: { fontSize: 28, color: '#ffffff' },
       },
+      s_chart0: null,
       s_chart1: null,
       s_chart2: null,
       m_chart1: null,
       l_chart1: null,
+      s_chart0_data: {
+        dataAxis: ['康美透析中心', '秀山透析中心', '弹子石门诊部', '陶家门诊部', '沙坪坝透析中心', '涪陵透析中心', '铜梁透析中心', '忠县透析中心'],
+        dataCount: [50, 49, 68, 89, 71, 42, 66, 39],
+        maxCount: 100,
+      },
       s_chart2_data: {
         xAxisData: ['梅毒', 'HCV', '正常', 'HBV+HCV', 'HBV'],
         seriesData: [
@@ -57,6 +63,13 @@ export default {
     };
   },
   methods: {
+    init() {
+      this.s_chart0 = echarts.init(this.$refs.s_chart0);
+      this.s_chart1 = echarts.init(this.$refs.s_chart1);
+      this.s_chart2 = echarts.init(this.$refs.s_chart2);
+      this.m_chart1 = echarts.init(this.$refs.m_chart1);
+      this.l_chart1 = echarts.init(this.$refs.l_chart1);
+    },
     resize() {
       this.s_chart1.resize();
       this.s_chart2.resize();
@@ -66,6 +79,15 @@ export default {
     clear() {
       this.s_chart1.clear();
       this.m_chart1.clear();
+    },
+    showLoading(dom) {
+      dom.showLoading({
+        text: '加载中',
+        color: '#c23531',
+        textColor: '#fff',
+        maskColor: '#1d2b72',
+        zlevel: 0,
+      });
     },
     setBarChart(data, chart, splitLineFlag, axisLineStyle = {}) {
       chart.clear();
@@ -115,9 +137,114 @@ export default {
         series: [{
           data: data.seriesData,
           type: 'bar',
+          // barWidth: 20,
+          barMaxWidth: '50%',
         }],
       };
       chart.setOption(option2);
+    },
+    setSimpleBarChart(data, chart) {
+      console.log(data, chart);
+      const dataShadow = Array(data.dataCount.length).fill(data.maxCount);
+      const option = {
+        tooltip: {},
+        grid: {
+          // width: '100%',
+          // height: '100%',
+          top: '5%',
+          bottom: '5%',
+          left: '33%',
+          // containLabel: true
+        },
+        xAxis: {
+          type: 'value',
+          show: false,
+          axisTick: {
+            show: false,
+          },
+          axisLine: {
+            show: false,
+          },
+        },
+        yAxis: {
+          type: 'category',
+          axisLine: {
+            show: false,
+          },
+          axisTick: {
+            show: false,
+          },
+          splitLine: {
+            show: false,
+          },
+          axisLabel: {
+            interval: 0,
+            // rotate: 30,
+            // align: 'left',
+            width: 500,
+            margin: 20,
+            textStyle: {
+              fontSize: 28,
+              color: '#fff',
+            },
+          },
+          data: data.dataAxis,
+        },
+        series: [
+          { // For shadow
+            type: 'bar',
+            barMaxWidth: 50,
+            itemStyle: {
+              normal: {
+                color: '#273992',
+                barBorderRadius: 15,
+              },
+            },
+            barGap: '-100%',
+            barCategoryGap: '60%',
+            data: dataShadow,
+            animation: false,
+          },
+          {
+            type: 'bar',
+            barMaxWidth: 50,
+            label: {
+              normal: {
+                color: '#53d9ff',
+                fontSize: 25,
+                fontWeight: 'bold',
+                offset: [0, 2],
+                position: 'right',
+                show: true,
+              },
+            },
+            itemStyle: {
+              normal: {
+                barBorderRadius: 15,
+                color: new echarts.graphic.LinearGradient(
+                  0, 0, 1, 0,
+                  [
+                    { offset: 0, color: '#4364ea' },
+                    { offset: 1, color: '#53d9ff' },
+                  ],
+                ),
+              },
+              emphasis: {
+                color: new echarts.graphic.LinearGradient(
+                  0, 0, 1, 0,
+                  [
+                    { offset: 0, color: '#2378f7' },
+                    { offset: 0.7, color: '#2378f7' },
+                    { offset: 1, color: '#83bff6' },
+                  ],
+                ),
+              },
+            },
+            data: data.dataCount,
+          },
+        ],
+      };
+      chart.setOption(option);
     },
     setPieChart() {
       this.clear();
@@ -241,11 +368,8 @@ export default {
   },
   mounted() {
     this.$nextTick(() => {
-      console.log('echartsechartsecharts');
-      this.s_chart1 = echarts.init(this.$refs.s_chart1);
-      this.s_chart2 = echarts.init(this.$refs.s_chart2);
-      this.m_chart1 = echarts.init(this.$refs.m_chart1);
-      this.l_chart1 = echarts.init(this.$refs.l_chart1);
+      this.init();
+      this.setSimpleBarChart(this.s_chart0_data, this.s_chart0);
       this.setPieChart();
       this.setBarChart(this.s_chart2_data, this.s_chart2, false);
       this.setBarChart(this.l_chart1_data, this.l_chart1, true, { lineStyle: { color: '#53d9ff' } });

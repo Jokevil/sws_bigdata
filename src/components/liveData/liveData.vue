@@ -14,7 +14,7 @@
             <li class="name">姓名</li>
             <li class="zlms">治疗模式</li>
         </ul>
-        <ul :class="`ul-row ul-bg${da.dataType}`" v-for="da in liveDataList" :key="da.id">
+        <ul :class="`ul-row ${index!==0? `ul-bg${da.dataType}` : 'breathe-btn'}`" v-for="(da,index) in liveDataList" :key="da.id">
             <li>{{da.time}}</li>
             <li class="center">{{da.centerName}}</li>
             <li class="name">{{da.name}}</li>
@@ -110,6 +110,25 @@ export default {
             font-size: 44px;
             letter-spacing: 6px;
             line-height: 98px;
+        }
+        .breathe-btn {
+            background: #6cc3fe;
+            background-image:-webkit-gradient(linear,left top,left bottom,from(#6cc3fe),to(#21a1d0));
+            -webkit-animation-timing-function:ease-in-out;
+            -webkit-animation-name:breathe;
+            -webkit-animation-duration:2700ms;
+            -webkit-animation-iteration-count:infinite;
+            -webkit-animation-direction:alternate;
+        }
+        @-webkit-keyframes breathe {
+            0% {
+                opacity:.8;
+            }
+            100% {
+                opacity:1;
+                // border:1px solid rgba(59,235,235,1);
+                box-shadow:0 1px 30px rgba(59,255,255,1);
+            }
         }
         .ul-row {
             width: 100%;
